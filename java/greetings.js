@@ -1,38 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
+
   var nameTypeTextElement = document.querySelector('.nameTypeText');
 
-  var callTotalElement = document.querySelector('.callTotalOne');
+  var checkedRadioBtn = document.querySelector(".languageSelected");
 
-  var afrikaansElement = document.querySelector('.addToKaansBtn');
-  var englishElement = document.querySelector('.addToEnglBtn');
-  var xhosaElement = document.querySelector('.addXhosaBtn');
+  var greetBtnElement = document.querySelector('.greetBtn');
+  var resetBtnElement = document.querySelector('.resetBtn');
+  var demoElement = document.querySelector(".demo");
+
+  var counterElement = document.querySelector(".counter");
 
   var greetingsObj = greetingsFoctory();
 
-  function myFunction() {
-    var x = document.getElementById("nameTypeText").value;
-    document.getElementById("greet").innerHTML = x;
-}
+  greetBtnElement.addEventListener('click', function() {
+    var checkedRadioBtn = document.querySelector("input[name='RadioButton']:checked");
+    var language = checkedRadioBtn.value;
+    var name = nameTypeTextElement.value;
+    if (name === "") {
+      alert('Please enter A name and Language')
+    }
+    if (language === "") {
+      alert('Please enter A name and Language')
+    }
 
-  function runOnLanguagesButtons() {
-
-    var name = nameTypeTextElement.value.trim();
-    greetingsObj.greetings(nameTypeTextElement);
-    nameTypeTextElement.innerHTML = greetingsObj.greetings();
-
-  }
-
-
-  addToKaansBtn.addEventListener('click', function() {
-    runOnLanguagesButtons();
-
+    var greeting = greetingsObj.greet(language, name);
+    demoElement.innerHTML = greeting;
   });
-  addToEnglBtn.addEventListener('click', function() {
-    runOnLanguagesButtons();
 
-  });
-  addXhosaBtn.addEventListener('click', function() {
-    runOnLanguagesButtons();
-
-  });
 });
