@@ -1,0 +1,90 @@
+html,
+body {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+}
+
+ul {
+    list-style-type: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: purple;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: green;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+.col-10.header h2{
+  text-align: center;
+  font-family: 'Gaegu', cursive;
+  line-height: 1.5;
+}
+
+.col-10.header img{
+  display: block;
+  margin: 0 auto;
+}
+.col-12 h2{
+  text-align: center;
+  font-family: 'Gaegu', cursive;
+  line-height: 1.5;
+}
+
+.col-12.cont img{
+  display: inline-block;
+  margin: 0 auto;
+  height: 10%;
+  width: 15%;
+}
+.col-4 li a {
+    display: inline-block;
+    color: purple;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+.nav{
+    border:1px solid #ccc;
+    border-width:1px 0;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+.nav li{
+    display:inline;
+}
+.nav a{
+    display:inline-block;
+    padding:10px;
+}
+.footer {
+background-color: grey;
+}
+.footer img{
+  width:40px; height:40px;
+}

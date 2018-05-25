@@ -1,54 +1,70 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="css/greet.css">
-  <title>Greetings on different languages</title>
+    <link rel="stylesheet" href="css/greet.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
-  <div class="container">
+
+    <div class="row center">
+        <div class="col-12" id="p1">
 
 
-    <h1> Greeting Widget</h1>
+            <p>Hello there, please type a name of a person on the white box, select one of SA's language and learn how to greet people!</p>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col-12">
+            <h1 id="demo">Greet Widget!</h1>
+        </div>
 
-    <label for="exampleEmailInput">NAME</label>
-    <input class="u-full-width nameTypeText" type="text" placeholder="Enter a person's name.">
-<br><br><br>
-    <div class="row">
+    </div>
+    <div class="row center">
+        <div class="col-3"></div>
 
-      <div class="col-12">
-        <label class="">
-                <input type="radio" name="RadioButton" class="languageSelected" value="Xhosa">
-                <span class="label-body">Xhosa</span>
-              </label>
-        <label class="">
-                <input type="radio" name="RadioButton" class="languageSelected" value="English">
-                <span class="label-body">English</span>
-              </label>
-        <label class="">
-                <input type="radio" name="RadioButton" class="languageSelected" value="Afrikaans">
-                <span class="label-body" >Afrikaans</span>
-              </label>
-      </div>
-      <br><br><br>
-      <div class="row">
-        <div class=" three buttons">
-          <button class="button-primary greetBtn" type="button" name="button">Greet</button>
-          <button class="button-primary resetBtn" type="button" name="button">Reset</button>
+        <div class="col-6 center">
+            <form id="form1" action="" onsubmit="return submitForm();">
+            <input id="inputBox" type="console.text" placeholder="try letters a-z..." pattern="[a-zA-Z]+"
+             title="Please enter only letters A-Z">
+
+        </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+    <div class="row center">
+
+        <div class=" col-12 radioSelect">
+            <input type="radio" name="radioLang" value="Xhosa" id="1"><label for="1"> Xhosa</label>
+            <input type="radio" name="radioLang" value="English" id="2"><label for="2">English</label>
+            <input type="radio" name="radioLang" value="Afrikaans" id="3"><label for="3">Afrikaans</label>
+        </div>
+        <!--            <div class="col-4"></div>-->
+    </div>
+
+
+
+
+    <div class="row center ">
+        <div class="col-6" id="counterAndResetBox">
+            <p class=""><strong>Counter : &nbsp;<span id="countNumber">0</span></strong></p>
+            <button id="resetBtn">Reset</button>
+        </div>
+        <div class="col-6" id="greetBox">
+            <button id="greetBtn" type="submit" form="form1" value="Submit"><strong>Greet!</strong></button>
 
         </div>
 
 
-      </div>
-
     </div>
 
-    <div class="demo"></div>
+
+
+
+
 </body>
+
 <script src="java/greet.js"></script>
 <script src="java/greetings.js"></script>
-
-
 </html>

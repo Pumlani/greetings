@@ -1,35 +1,62 @@
-function greetingsFoctory() {
-  var numOfNames = 0;
-  var namesGreeted = {};
+function GreetingsFactory(greetedPeople) {
 
-  function greet(language, name) {
+  function greetNow(inputName, language) {
 
-    if (namesGreeted[name] === undefined) {
-      namesGreeted[name] = 0;
-      numOfNames += 1;
+
+    inputName = inputName.toLowerCase();
+    let tmpString = inputName.substr(1, inputName.length);
+    let firstCh = inputName.charAt(0).toUpperCase();
+    inputName = firstCh + tmpString
+
+    //counter init
+    if (localStorage['counter'] === undefined) {
+      localStorage.setItem('counter', JSON.stringify(0));
     }
 
-    if (language === "English") {
-      return 'Hello, ' + name;
-    }
-    if (language === "Afrikaans") {
+    if (greetedPeople[inputName] === undefined) {
+      greetedPeople[inputName] = 0;
+      var counter = JSON.parse(localStorage.getItem('counter'));
+      localStorage.setItem('counter', JSON.parse(counter + 1));
 
-      return 'hallo, ' + name;
     }
-    if (language === "Xhosa") {
+    //return a greeting based on the given language
+    if (language === 'Xhosa') {
+      return 'Molo ' + inputName
+    }
+    if (language === 'English') {
 
-      return 'Molo, ' + name;
+      return 'Hello ' + inputName
+
+
     }
 
+    if (language === 'Afrikaans') {
+
+      return 'Hallo ' + inputName
+
+
+    }
   }
 
-  function NumberOfGreetedPple() {
-
-    return numOfNames;
+  function setLanguage(value) {
+    var languChosen = '';
+    if (value === 'Xhosa') {
+      languChosen = 'Xhosa';
+    }
+    if (value === 'English') {
+      languChosen = 'English';
+    }
+    if (value === 'Afrikaans') {
+      languChosen = 'Afrikaans';
+    }
+    return languChosen
   }
 
   return {
-    greet,
-    NumberOfGreetedPple
+    greetNow,
+    setLanguage,
+    greetedPeople
   }
+
+
 }

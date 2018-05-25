@@ -1,43 +1,43 @@
-describe('The greetings function logic', function() {
+describe('greet function', function() {
+  it('Should prints out the user names accurately.', function() {
 
-  it('should prints out a string entered when the button is clicked', function() {
-
-    var greetingsObj = greetingsFoctory();
+    var greet = GreetingsFactory({});
+    assert.equal('Hello Pumlani', greet.greetNow('Pumlani', 'English'));
+    assert.equal('Molo Lilo', greet.greetNow('Lilo', 'Xhosa'));
+    assert.equal('Hallo Inam', greet.greetNow('Inam', 'Afrikaans'));
 
   });
 
+  it('Should not increase the counter if the name has been greeted once.', function() {
+    var greet = GreetingsFactory({});
+    greet.greetNow('Pumlani', 'Xhosa');
 
-    it('should greet a person when the button is clicked.' , function(){
-
-      var greetingsObj = greetingsFoctory();
-
-     var name = 'Pumlani';
-       assert.equal(greet(name),'Hello, Pumlani');
+    var countOne = JSON.parse(localStorage.getItem('count'));
+    greet.greetNow('Pumlani', 'Afrikaans');
+    var countTwo = JSON.parse(localStorage.getItem('count'));
 
 
-   });
 
-   it('should return string variables when the button is clicked.' , function(){
+    assert.equal(countOne, countTwo);
+  });
 
-     var greetingsObj = greetingsFoctory();
 
-     assert.typeOf(name, 'string', 'name is a string');
+  it('Should return a name with uppercase first letter even if the name is in lowercase ', function() {
+    var greet = GreetingsFactory({});
+    assert.equal('Hello Pumlani', greet.greetNow('pumlani', 'English'));
+  });
 
-   });
+  it('Should not increase the counter if the name has been greeted', function() {
+    var greet = GreetingsFactory({});
+    greet.greetNow('Pumlani', 'Xhosa');
 
-   it("should return an error if it's not a string when the button is clicked." , function(){
+    var countOne = JSON.parse(localStorage.getItem('count'));
+    greet.greetNow('Pumlani', 'Afrikaans');
+    var countTwo = JSON.parse(localStorage.getItem('count'));
 
-     var greetingsObj = greetingsFoctory();
 
-     assert.notEqual(3, "3", 'these two are not equal');
 
-   });
-
-   it('should greet the name of a person entered.', function() {
-    var greetingsObj = greetingsFoctory();
-
-    assert.equal(greetingsObj.greetings("Pumlani"), 1)
-
+    assert.equal(countOne, countTwo);
   });
 
 });
