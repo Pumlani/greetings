@@ -1,70 +1,87 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/greet.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/greet.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel ="stylesheet" href ="./css/simple-grid.css" />
+<link rel ="stylesheet" href ="./css/simple-grid.min.css" />
+<link rel ="stylesheet" href ="./css/simple-grid.css" />
+  <link href="https://fonts.googleapis.com/css?family=Gaegu" rel="stylesheet">
+  <title></title>
 </head>
 
 <body>
+  <div class="container">
 
-    <div class="row center">
-        <div class="col-12" id="p1">
+  <center><div class="row">
 
+    <div class="col-12">
 
-            <p>Hello there, please type a name of a person on the white box, select one of SA's language and learn how to greet people!</p>
-        </div>
-    </div>
-    <div class="row center">
-        <div class="col-12">
-            <h1 id="demo">Greet Widget!</h1>
-        </div>
+      <p> Hello there, please enter a name and select a language to use when greeting! </p>
 
     </div>
-    <div class="row center">
-        <div class="col-3"></div>
+  </div>
 
-        <div class="col-6 center">
-            <form id="form1" action="" onsubmit="return submitForm();">
-            <input id="inputBox" type="console.text" placeholder="try letters a-z..." pattern="[a-zA-Z]+"
-             title="Please enter only letters A-Z">
+  <div class="row">
 
-        </form>
-        </div>
-        <div class="col-3"></div>
-    </div>
-    <div class="row center">
-
-        <div class=" col-12 radioSelect">
-            <input type="radio" name="radioLang" value="Xhosa" id="1"><label for="1"> Xhosa</label>
-            <input type="radio" name="radioLang" value="English" id="2"><label for="2">English</label>
-            <input type="radio" name="radioLang" value="Afrikaans" id="3"><label for="3">Afrikaans</label>
-        </div>
-        <!--            <div class="col-4"></div>-->
-    </div>
-
-
-
-
-    <div class="row center ">
-        <div class="col-6" id="counterAndResetBox">
-            <p class=""><strong>Counter : &nbsp;<span id="countNumber">0</span></strong></p>
-            <button id="resetBtn">Reset</button>
-        </div>
-        <div class="col-6" id="greetBox">
-            <button id="greetBtn" type="submit" form="form1" value="Submit"><strong>Greet!</strong></button>
-
-        </div>
-
+    <div class="col-4"></div>
+    <div class="col-4">
+      <input type="text" name="" value="" placeholder="enter a name to greet" class="takesText">
 
     </div>
 
+    <div class="col-4"></div>
+  </div>
+
+  <div class="row">
+    <div class "col-12 threeRadios">
+
+      <input type="radio" name="language" class="languageRadio" value="english">
+      <span class="label-body">English</span>
+      <input type="radio" name="language" class="languageRadio" value="xhosa">
+      <span class="label-body">Xhosa</span>
+      <input type="radio" name="language" class="languageRadio" value="afrikaans">
+      <span class="label-body">Afrikaans</span>
+
+    </div>
+
+  </div>
 
 
 
+  <div class="row">
 
+    <div class="col-4">
+
+      <button class="button-primary  greetBtn"  type="button" name="button"><strong>Greet</strong></button>
+
+    </div>
+
+    <div class="col-4">
+
+      <div>Counter : <span id="counting">0</span> </div>
+      <button class="button-primary  resetBtn" type="button" name="button"><strong>Reset</strong></button>
+    </div>
+
+    <div class="col-4">
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-12">
+
+      <h2 class="displayOut">Greetings Widget</h2>
+    </div>
+  </div>
+
+</center>
+</div>
 </body>
+<script src="java/greet.js" charset="utf-8"></script>
+<script src="java/greetings.js" charset="utf-8"></script>
 
-<script src="java/greet.js"></script>
-<script src="java/greetings.js"></script>
 </html>

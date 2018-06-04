@@ -1,79 +1,58 @@
-//adding querySelectors and refs
+document.addEventListener('DOMContentLoaded', function() {
+  //elements references
+  var inputName = document.querySelector('.takesText');
 
-var demoName = document.querySelector('#demo');
-var getInput = document.querySelector('#inputBox');
-var greetBtn = document.querySelector('#greetBtn');
-var resetBtn = document.querySelector('#resetBtn');
-var displayCount = document.querySelector('#countNumber');
+  var checkedRadioBtn = document.querySelector(".languageRadio");
 
+  var greetBtnElem = document.querySelector('.greetBtn');
+  var resetBtnElem = document.querySelector(".resetBtn");
 
-function getName() {
-  var name = getInput.value;
+  var displayCountElem = document.querySelector("#counting");
 
-  return {
-    name
-  }
-}
+  var displayOutput = document.querySelector(".displayOut");
 
-function clearBox() {
-  getInput.value = "";
-}
+  var storage = localStorage.getItem("names") ? JSON.parse(localStorage.getItem("names")) : {};
 
-function getCounter() {
+  var greetingsObj = greetingsfactory();
 
-  displayCount.innerHTML = localStorage.getItem('counter');
-}
-getCounter();
+  //greet button
+  greetBtnElem.addEventListener('click', function() {
 
-function checkCounter() {
-  //counter init
-  if (localStorage['counter'] === undefined) {
-    localStorage.setItem('counter', JSON.stringify(0));
-  }
+    var checkedRadioBtn = document.querySelector("input[name='language']:checked");
+    if (checkedRadioBtn) {
+      var language = checkedRadioBtn.value;
+      var name = inputName.value.toUpperCase();
+      displayOutput.innerHTML = greetingsObj.greet(name, language);
+      localStorage.setItem('names', JSON.stringify(greetingsObj.names()));
+      displayCountElem.innerHTML = greetingsObj.count();
 
-}
-
-//create a map if it's empty un local storage
-function checkMap() {
-  if (!localStorage.getItem('namesGreeted')) {
-    localStorage.setItem('namesGreeted', JSON.stringify({}));
-  }
-}
-
-
-function submitForm() {
-  checkMap();
-  //instance of the greet Factory
-  var greet = GreetingsFactory(JSON.parse(localStorage.getItem('namesGreeted')));
-
-  var radioBtn = document.querySelector('input[name="radioLang"]:checked');
-  var nameFromDom = getName().name;
-  console.log('type of name from DOM : ' + typeof(parseFloat(nameFromDom)));
-  //ensure no empy name and there is a chaecked radio button
-  if (nameFromDom) {
-    if (radioBtn !== null) {
-      //getName();
-      var langFromDom = greet.setLanguage(radioBtn.value);
-      checkCounter();
-      demoName.innerHTML = greet.greetNow(nameFromDom, langFromDom);
-      localStorage.setItem('namesGreeted', JSON.stringify(greet.greetedPeople));
-      getCounter();
-      clearBox();
-    } else {
-      demoName.innerHTML = 'Please type in a name first';
     }
-  } else {
+    //error messages
+    if (name === "") {
 
-    demoName.innerHTML = ('Please select your language');
+      displayOutput.innerHTML = "please write a name of a person!"
+    }
+    if (language === "") {
 
-  }
-  return false;
-};
+      displayOutput.innerHTML = "please select one of our languages!"
+    }
+
+    //clear text
+    function clearBox() {
+
+      inputName.value = "";
+    }
+    clearBox();
+
+  });
+
+  //reset button
+  resetBtnElem.addEventListener('click', function() {
+    localStorage.setItem('namesGreeted', JSON.stringify({}));
+    displayCountElem.innerHTML = 0;
 
 
-resetBtn.addEventListener('click', function run() {
-  localStorage.setItem('counter', JSON.stringify(0));
-  localStorage.setItem('namesGreeted', JSON.stringify({}));
-  displayCount.innerHTML = 0;
-  demoName.innerHTML = 'Greet Widget!';
+  });
+
+
 });

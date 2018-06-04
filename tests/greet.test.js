@@ -1,43 +1,77 @@
 describe('greet function', function() {
-  it('Should prints out the user names accurately.', function() {
+  it('should greet a person in Afrikaans language.', function() {
 
-    var greet = GreetingsFactory({});
-    assert.equal('Hello Pumlani', greet.greetNow('Pumlani', 'English'));
-    assert.equal('Molo Lilo', greet.greetNow('Lilo', 'Xhosa'));
-    assert.equal('Hallo Inam', greet.greetNow('Inam', 'Afrikaans'));
+    var greetingsObj = greetingsfactory();
+    var name = "Pumlani";
+    var lang = 'afrikaans';
+
+    assert.equal(greetingsObj.greet(name, lang), 'Hallo Pumlani')
 
   });
 
-  it('Should not increase the counter if the name has been greeted once.', function() {
-    var greet = GreetingsFactory({});
-    greet.greetNow('Pumlani', 'Xhosa');
+  it('should greet a person in English language.', function() {
 
-    var countOne = JSON.parse(localStorage.getItem('count'));
-    greet.greetNow('Pumlani', 'Afrikaans');
-    var countTwo = JSON.parse(localStorage.getItem('count'));
+    var greetingsObj = greetingsfactory();
+    var name = 'Monde';
+    var lang = 'english';
+
+    assert.equal(greetingsObj.greet(name, lang), 'Hello Monde')
 
 
-
-    assert.equal(countOne, countTwo);
   });
 
 
-  it('Should return a name with uppercase first letter even if the name is in lowercase ', function() {
-    var greet = GreetingsFactory({});
-    assert.equal('Hello Pumlani', greet.greetNow('pumlani', 'English'));
+  it('should greet a person in Xhosa language.', function() {
+
+    var greetingsObj = greetingsfactory();
+    var name = 'Inam';
+    var lang = 'xhosa';
+
+    assert.equal(greetingsObj.greet(name, lang), 'Molo Inam')
+
+  });
+  it('should return the number of people that have been counted.', function() {
+
+    var greetingsObj = greetingsfactory();
+
+    greetingsObj.greet('Pumlan');
+    greetingsObj.greet('Monde');
+
+    assert.equal(greetingsObj.count(), 2)
+
   });
 
-  it('Should not increase the counter if the name has been greeted', function() {
-    var greet = GreetingsFactory({});
-    greet.greetNow('Pumlani', 'Xhosa');
+  it('should increase the counter if the name not been greeted once.', function() {
 
-    var countOne = JSON.parse(localStorage.getItem('count'));
-    greet.greetNow('Pumlani', 'Afrikaans');
-    var countTwo = JSON.parse(localStorage.getItem('count'));
+    var greetingsObj = greetingsfactory();
 
+    greetingsObj.greet('Pumlan');
+    greetingsObj.greet('Monde');
+    assert.equal(greetingsObj.count(), 2)
 
+    greetingsObj.greet('Unathi');
+    greetingsObj.greet('Anda');
+    greetingsObj.greet('Aphiwe');
+    greetingsObj.greet('Lisa');
+    greetingsObj.greet('Inam');
+    assert.equal(greetingsObj.count(), 7)
 
-    assert.equal(countOne, countTwo);
   });
+  it('should not increase the counter if the name been greeted.', function() {
 
+    var greetingsObj = greetingsfactory();
+
+    greetingsObj.greet('Pumlani');
+    greetingsObj.greet('Monde');
+    assert.equal(greetingsObj.count(), 2)
+
+    greetingsObj.greet('Inam');
+    greetingsObj.greet('Unathi');
+    greetingsObj.greet('Anda');
+    greetingsObj.greet('Monde');
+    greetingsObj.greet('Pumlani');
+
+    assert.equal(greetingsObj.count(), 5)
+
+  });
 });
