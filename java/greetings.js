@@ -30,9 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
     //error messages
     if (name === "") {
 
-      displayOutput.innerHTML = "please write a name of a person!"
+      displayOutput.innerHTML = "please write a name of a person on the Box!"
     }
-    if (language === "") {
+  //  var language = checkedRadioBtn.value;
+    if (checkedRadioBtn === null) {
 
       displayOutput.innerHTML = "please select one of our languages!"
     }

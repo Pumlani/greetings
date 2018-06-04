@@ -3,11 +3,14 @@ function greetingsfactory(storage) {
 
   function greet(name, language) {
     if (name != "") {
-      name = namesGreeted;
+
     }
 
     if (namesGreeted[name] === undefined) {
       namesGreeted[name] = 0;
+    }
+    if (language != "") {
+
     }
 
     if (language === 'xhosa') {
