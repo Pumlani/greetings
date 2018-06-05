@@ -1,4 +1,4 @@
-describe('greet function', function() {
+describe('The greetings function Tests', function() {
   it('should greet a person in Afrikaans language.', function() {
 
     var greetingsObj = greetingsfactory();
@@ -74,4 +74,14 @@ describe('greet function', function() {
     assert.equal(greetingsObj.count(), 5)
 
   });
+  it('should return the names as keys and 0 as a key value.', function() {
+
+    var greetingsObj = greetingsfactory();
+
+    greetingsObj.greet('PUMLANI');
+    greetingsObj.greet('MASEBE');
+
+    assert.deepEqual(({PUMLANI: 0, MASEBE: 0}),greetingsObj.names());
+  });
+
 });
