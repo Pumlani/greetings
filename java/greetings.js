@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       displayOutput.innerHTML = "please write a name of a person on the Box!"
     }
-  //  var language = checkedRadioBtn.value;
+    //  var language = checkedRadioBtn.value;
     if (checkedRadioBtn === null) {
 
       displayOutput.innerHTML = "please select one of our languages!"
@@ -49,8 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //reset button
   resetBtnElem.addEventListener('click', function() {
-    localStorage.setItem('namesGreeted', JSON.stringify({}));
+    // localStorage.setItem('namesGreeted', JSON.stringify({}));
     displayCountElem.innerHTML = 0;
+    //localStorage.removeItem();
+    location.reload();
+    localStorage.clear();
+
+
 
 
   });

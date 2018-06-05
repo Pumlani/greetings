@@ -9,7 +9,7 @@ body{
     background-color: pink;
 }
 button{
-  border-radius: 60%;
-  width: auto;
-  height: auto;
+  border-radius: 30%;
+  width: 30%;
+  height: 30%;
 }
