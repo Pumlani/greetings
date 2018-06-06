@@ -13,7 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var storage = localStorage.getItem("names") ? JSON.parse(localStorage.getItem("names")) : {};
 
-  var greetingsObj = greetingsfactory();
+
+  var greetingsObj = greetingsfactory(storage);
+  displayCountElem.innerHTML = greetingsObj.count();
 
   //greet button
   greetBtnElem.addEventListener('click', function() {
